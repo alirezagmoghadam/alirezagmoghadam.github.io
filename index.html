@@ -4,193 +4,406 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alireza Ghasemian Moghaddam</title>
-<meta name="description" content="Alireza Ghasemian Moghaddam, M.Sc. student in Statistics and Data Science at KU Leuven. Machine learning for clinical decision support and multimodal learning.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<meta name="description" content="Alireza Ghasemian Moghaddam, M.Sc. student in Statistics and Data Science at KU Leuven, working on multimodal machine learning for clinical decision support.">
+<link rel="preload" href="fonts/source-serif-4-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face {
+    font-family: "Source Serif 4";
+    src: url("fonts/source-serif-4-latin-wght-normal.woff2") format("woff2");
+    font-weight: 200 900; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: "Source Serif 4";
+    src: url("fonts/source-serif-4-latin-wght-italic.woff2") format("woff2");
+    font-weight: 200 900; font-style: italic; font-display: swap;
+  }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "IBM Plex Sans"; src: url("fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+
   :root {
-    --bg: #ffffff;
-    --text: #1f2328;
-    --muted: #5b636e;
-    --rule: #e3e6ea;
-    --accent: #1f4e79;
-    --accent-hover: #163a5c;
-    --table-head: #f5f7f9;
+    --paper: #ffffff;
+    --panel: #f4f7f8;
+    --ink: #18212b;
+    --muted: #5c6773;
+    --rule: #e1e5e9;
+    --rule-strong: #c9d1d8;
+    --accent: #165e6b;
+    --accent-soft: #e6f0f1;
+    --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #15181c;
-      --text: #e6e8eb;
-      --muted: #a3abb5;
-      --rule: #2c3238;
-      --accent: #8cb8e6;
-      --accent-hover: #b3d1f0;
-      --table-head: #1d2126;
+      --paper: #162027;
+      --panel: #1c2830;
+      --ink: #e4e9ec;
+      --muted: #9daab4;
+      --rule: #2a3640;
+      --rule-strong: #3a4954;
+      --accent: #7fc3cc;
+      --accent-soft: #1e333a;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #15181c;
-    --text: #e6e8eb;
-    --muted: #a3abb5;
-    --rule: #2c3238;
-    --accent: #8cb8e6;
-    --accent-hover: #b3d1f0;
-    --table-head: #1d2126;
+    --paper: #162027;
+    --panel: #1c2830;
+    --ink: #e4e9ec;
+    --muted: #9daab4;
+    --rule: #2a3640;
+    --rule-strong: #3a4954;
+    --accent: #7fc3cc;
+    --accent-soft: #1e333a;
   }
+
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: "Source Sans 3", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.62;
+    font-optical-sizing: auto;
   }
-  main {
-    max-width: 760px;
+  a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+  .page {
+    max-width: 1120px;
     margin: 0 auto;
-    padding: 56px 20px 72px;
+    padding: 72px 32px 96px;
+    display: grid;
+    grid-template-columns: 270px minmax(0, 1fr);
+    column-gap: 72px;
   }
-  header h1 {
-    font-family: "Source Serif 4", Georgia, serif;
-    font-weight: 600;
-    font-size: 2.1rem;
-    line-height: 1.2;
-    margin: 0 0 6px;
-  }
-  .role { color: var(--muted); margin: 0 0 16px; }
-  .links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px 18px;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-  a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  a:hover { color: var(--accent-hover); }
-  .links a { font-weight: 600; text-decoration: none; }
-  .links a:hover { text-decoration: underline; }
-  section { margin-top: 44px; }
-  h2 {
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 6px;
+
+  /* Left column: identity and links */
+  .identity { position: sticky; top: 72px; align-self: start; }
+  .identity h1 {
+    font-family: var(--serif);
+    font-weight: 620;
+    font-size: 2.55rem;
+    line-height: 1.04;
+    letter-spacing: -0.012em;
     margin: 0 0 18px;
   }
-  h3 { font-size: 1.08rem; font-weight: 700; margin: 0; line-height: 1.35; }
-  .item + .item { margin-top: 30px; }
-  .meta { color: var(--muted); margin: 2px 0 8px; font-size: 0.95rem; }
-  p { margin: 0 0 10px; }
-  ul.plain { margin: 0; padding-left: 1.15em; }
-  ul.plain li + li { margin-top: 4px; }
-  .item-links { margin-top: 8px; font-weight: 600; }
-  .item-links a + a { margin-left: 16px; }
-  .table-wrap { overflow-x: auto; margin: 12px 0 8px; }
-  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-  th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--rule); }
-  th { background: var(--table-head); font-weight: 600; }
-  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
-  .note { color: var(--muted); font-size: 0.92rem; }
-  footer { margin-top: 56px; color: var(--muted); font-size: 0.88rem; border-top: 1px solid var(--rule); padding-top: 14px; }
-  @media (max-width: 520px) {
-    main { padding: 36px 16px 56px; }
-    header h1 { font-size: 1.75rem; }
-    body { font-size: 16px; }
-    table { font-size: 0.85rem; }
-    th, td { padding: 6px 6px; }
+  .identity h1 span { display: block; }
+  .identity .role {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--muted);
+    margin: 0 0 26px;
+  }
+  .contact { list-style: none; margin: 0; padding: 0; font-family: var(--sans); font-size: 0.95rem; }
+  .contact li { border-top: 1px solid var(--rule); }
+  .contact li:last-child { border-bottom: 1px solid var(--rule); }
+  .contact a { display: block; padding: 8px 0; font-weight: 500; text-decoration: none; }
+  .contact a:hover { text-decoration: underline; }
+  .updated { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-top: 22px; }
+
+  /* Right column */
+  .content { max-width: 680px; }
+  .lead {
+    font-size: 1.42rem;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 4px 0 18px;
+  }
+  .sublead { color: var(--muted); margin: 0; }
+
+  section { margin-top: 64px; }
+  h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin: 0 0 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .entry { display: grid; grid-template-columns: 84px minmax(0, 1fr); column-gap: 20px; }
+  .entry + .entry { margin-top: 40px; }
+  .when {
+    font-family: var(--sans);
+    font-size: 0.86rem;
+    color: var(--muted);
+    padding-top: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  h3 { font-family: var(--serif); font-size: 1.16rem; font-weight: 600; line-height: 1.35; margin: 0 0 4px; }
+  .meta { font-family: var(--sans); font-size: 0.9rem; line-height: 1.5; color: var(--muted); margin: 0 0 12px; }
+  .entry p { margin: 0 0 12px; }
+  .entry p:last-child { margin-bottom: 0; }
+  .note { font-size: 0.95rem; color: var(--muted); }
+  .go { font-family: var(--sans); font-size: 0.95rem; font-weight: 500; }
+
+  /* Architecture figure */
+  figure { margin: 22px 0 8px; padding: 22px 20px 16px; background: var(--panel); border-radius: 6px; }
+  figure svg { display: block; width: 100%; height: auto; }
+  .arch-narrow { display: none; }
+  figcaption { font-family: var(--sans); font-size: 0.84rem; color: var(--muted); margin-top: 12px; line-height: 1.5; }
+  .d-box { fill: var(--paper); stroke: var(--rule-strong); stroke-width: 1; }
+  .d-fuse { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.25; }
+  .d-out { fill: var(--paper); stroke: var(--accent); stroke-width: 1.25; }
+  .d-t { fill: var(--ink); font-family: var(--sans); font-size: 12.5px; font-weight: 600; }
+  .d-s { fill: var(--muted); font-family: var(--sans); font-size: 11.5px; }
+  .d-line { stroke: var(--muted); stroke-width: 1.1; fill: none; }
+  .d-drop { stroke: var(--accent); stroke-width: 1.25; stroke-dasharray: 4 3; fill: none; }
+  .d-glyph { stroke: var(--accent); stroke-width: 1.4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .d-head { fill: var(--muted); }
+  .d-head-a { fill: var(--accent); }
+
+  /* Results table */
+  .results { width: 100%; border-collapse: collapse; font-family: var(--sans); font-size: 0.9rem; margin: 18px 0 10px; }
+  .results caption { text-align: left; font-family: var(--sans); font-size: 0.84rem; color: var(--muted); padding-bottom: 8px; }
+  .results th, .results td { padding: 8px 10px; border-bottom: 1px solid var(--rule); text-align: right; font-variant-numeric: tabular-nums; }
+  .results th:first-child, .results td:first-child { text-align: left; padding-left: 0; }
+  .results thead th { font-weight: 500; color: var(--muted); border-bottom: 1px solid var(--rule-strong); }
+  .results .ours { color: var(--accent); font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .page { grid-template-columns: 1fr; padding: 44px 20px 72px; }
+    .identity { position: static; margin-bottom: 44px; }
+    .identity h1 { font-size: 2.2rem; }
+    .identity h1 span { display: inline; }
+    .contact { display: flex; flex-wrap: wrap; gap: 4px 18px; }
+    .contact li, .contact li:last-child { border: 0; }
+    .contact a { padding: 2px 0; }
+  }
+  @media (max-width: 560px) {
+    body { font-size: 17px; }
+    .page { padding: 36px 16px 64px; }
+    .identity h1 { font-size: 1.95rem; }
+    .lead { font-size: 1.24rem; }
+    section { margin-top: 52px; }
+    .entry { grid-template-columns: 1fr; }
+    .when { padding-top: 0; margin-bottom: 2px; }
+    .arch-wide { display: none; }
+    .arch-narrow { display: block; }
+    figure { padding: 16px 12px 12px; }
+    .results { font-size: 0.84rem; }
+    .results th, .results td { padding: 7px 5px; }
   }
 </style>
 </head>
 <body>
-<main>
+<div class="page">
 
-<header>
-  <h1>Alireza Ghasemian Moghaddam</h1>
-  <p class="role">M.Sc. student in Statistics and Data Science, KU Leuven</p>
-  <ul class="links">
-    <li><a href="mailto:alirezaghasemianmoghadam@gmail.com">Email</a></li>
-    <li><a href="files/Ghasemian-Moghaddam-CV.pdf">CV (PDF)</a></li>
-    <li><a href="https://github.com/alirezagmoghadam">GitHub</a></li>
-    <li><a href="https://orcid.org/0009-0007-2201-5333">ORCID</a></li>
-    <li><a href="https://www.linkedin.com/in/alirezagmoghadam">LinkedIn</a></li>
-  </ul>
-</header>
+  <header class="identity">
+    <h1><span>Alireza</span> <span>Ghasemian</span> <span>Moghaddam</span></h1>
+    <p class="role">M.Sc. student in Statistics and Data Science, KU Leuven</p>
+    <ul class="contact">
+      <li><a href="mailto:alirezaghasemianmoghadam@gmail.com">Email</a></li>
+      <li><a href="files/Ghasemian-Moghaddam-CV.pdf">CV (PDF)</a></li>
+      <li><a href="https://github.com/alirezagmoghadam">GitHub</a></li>
+      <li><a href="https://orcid.org/0009-0007-2201-5333">ORCID</a></li>
+      <li><a href="https://www.linkedin.com/in/alirezagmoghadam">LinkedIn</a></li>
+    </ul>
+    <p class="updated">Updated November 2026</p>
+  </header>
 
-<section id="about">
-  <h2>About</h2>
-  <p>I am a second-year master's student in Statistics and Data Science at KU Leuven, Belgium. Before that I completed a B.Sc. in Computer Science and Engineering at Ferdowsi University of Mashhad, Iran.</p>
-  <p>I work on machine learning for clinical decision support, in particular multimodal models that combine structured electronic health record data, medical imaging and free-text clinical notes in a single predictive model. I am interested in how these models behave when a modality is missing at prediction time, and in principled statistical evaluation of predictive models in medical settings.</p>
-  <p>I am looking for a PhD position starting in 2027.</p>
-</section>
+  <main class="content">
 
-<section id="current">
-  <h2>Current work</h2>
-  <div class="item">
-    <h3>Master's thesis: randomization tests for replicated single-case experiments</h3>
-    <p class="meta">KU Leuven, supervised by Prof. Patrick Onghena · 2026–2027, in progress</p>
-    <p>A Monte Carlo study of the Type I error rate and power of randomization tests that combine evidence across replicated randomized AB (single-case) designs. Earlier simulation work modelled randomization-test P values as continuous under the null hypothesis, although they can only take discrete values. This thesis tests whether those results hold once the discreteness is taken into account, and compares combining P values against combining the random assignments directly.</p>
-    <p class="note">Full title: A statistical comparison of randomization tests for testing an intervention effect in replicated randomized AB designs: the combination puzzle.</p>
-  </div>
-</section>
+    <p class="lead">I work on machine learning for clinical decision support: models that combine electronic health records, medical images and clinical notes, how they behave when one of those inputs is missing, and how to evaluate them with statistical rigour.</p>
+    <p class="sublead">I am a second-year M.Sc. student in Statistics and Data Science at KU Leuven, and I am looking for a PhD position starting in 2027.</p>
 
-<section id="research">
-  <h2>Research</h2>
+    <section id="current">
+      <h2>Current work</h2>
+      <article class="entry">
+        <div class="when">2026–27</div>
+        <div>
+          <h3>Master's thesis: randomization tests for replicated single-case experiments</h3>
+          <p class="meta">KU Leuven, supervised by Prof. Patrick Onghena. In progress.</p>
+          <p>A Monte Carlo study of the Type I error rate and power of randomization tests that combine evidence across replicated randomized AB (single-case) designs. Earlier simulation work modelled randomization-test P values as continuous under the null hypothesis, although they can only take discrete values. This thesis tests whether those results hold once the discreteness is taken into account, and compares combining P values against combining the random assignments directly.</p>
+          <p class="note">Full title: A statistical comparison of randomization tests for testing an intervention effect in replicated randomized AB designs: the combination puzzle.</p>
+        </div>
+      </article>
+    </section>
 
-  <div class="item">
-    <h3>Multimodal fusion of clinical time series, chest X-ray images and clinical notes</h3>
-    <p class="meta">B.Sc. thesis, Ferdowsi University of Mashhad, supervised by Prof. Hadi Sadoghi Yazdi · 2023–2024</p>
-    <p>A three-modality fusion network trained on 6,125 intensive care patients from MIMIC-IV, MIMIC-CXR and MIMIC-IV-Note. Clinical time series are encoded by a stacked LSTM, chest radiographs by a ResNet-34 pretrained on CheXpert, and discharge and radiology notes by BioWordVec embeddings and a second LSTM. The encoders are pretrained separately and then fused. Training with multimodal dropout (p = 0.3) makes the model usable when a modality is missing at prediction time.</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Task and metric</th><th class="num">Fusion model</th><th class="num">Best single modality</th><th class="num">MedFuse</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>48-hour in-hospital mortality, AUROC</td><td class="num">0.883</td><td class="num">0.868</td><td class="num">0.874</td></tr>
-          <tr><td>48-hour in-hospital mortality, AUPRC</td><td class="num">0.609</td><td class="num">0.558</td><td class="num">0.567</td></tr>
-          <tr><td>Phenotyping, 25 ICD-9 code groups, AUROC</td><td class="num">0.772</td><td class="num">0.755</td><td class="num">0.770</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="note">The best single modality for mortality is chest radiographs. With imaging withheld from every sample, AUROC was 0.882 for mortality and 0.772 for phenotyping.</p>
-    <p class="item-links"><a href="files/Ghasemian-Moghaddam-BSc-thesis.pdf">Thesis report (PDF)</a></p>
-  </div>
+    <section id="research">
+      <h2>Research</h2>
 
-  <div class="item">
-    <h3>Automatic pain detection from facial expressions</h3>
-    <p class="meta">Research intern, Ferdowsi University of Mashhad · 2024–2025</p>
-    <p>A real-time Python pipeline that scores pain frame by frame from video: face detection with RetinaFace, landmark localisation with MobileFaceNet and facial action unit estimation with Py-Feat, combined into the Prkachin and Solomon Pain Intensity score over AU4, AU6/7, AU9/10 and AU43 and thresholded for a per-frame pain decision at five processed frames per second. The pipeline ran as the pain-detection module of an ESP32-based knee therapy device, which stops and raises an alert when it detects pain. The project included a review of annotated pain corpora (UNBC-McMaster, BioVid Heat Pain, BP4D+, Pain Emotion Faces Database) for patients who cannot self-report.</p>
-  </div>
-</section>
+      <article class="entry">
+        <div class="when">2023–24</div>
+        <div>
+          <h3>Multimodal fusion of clinical time series, chest X-rays and clinical notes</h3>
+          <p class="meta">B.Sc. thesis, Ferdowsi University of Mashhad, supervised by Prof. Hadi Sadoghi Yazdi.</p>
+          <p>A fusion network trained on 6,125 intensive care patients from MIMIC-IV, MIMIC-CXR and MIMIC-IV-Note. Each modality has its own encoder, pretrained separately, and their features are then fused for prediction. Training with multimodal dropout lets the model still predict when a modality is missing.</p>
 
-<section id="publications">
-  <h2>Publications</h2>
-  <div class="item">
-    <h3>MACD enhancement through optimized weighting and stability analysis</h3>
-    <p class="meta"><strong>A. Ghasemian Moghaddam</strong>, T. Bahraini, H. Sadoghi Yazdi · Under review at the <em>Journal of Economics, Finance and Administrative Science</em> (Emerald), submitted 2025</p>
-    <p>A reweighted formulation of the MACD technical indicator, evaluated for stability across market regimes with a purpose-built backtesting framework.</p>
-    <p class="item-links"><a href="https://github.com/alirezagmoghadam/macdpy">Code (macdpy)</a></p>
-  </div>
-</section>
+          <figure>
+            <svg class="arch-wide" viewBox="0 0 700 262" role="img" aria-labelledby="archTitle archDesc">
+              <title id="archTitle">Architecture of the three-modality fusion model</title>
+              <desc id="archDesc">Clinical time series pass through a stacked LSTM, chest radiographs through a ResNet-34 pretrained on CheXpert, and clinical notes through BioWordVec embeddings and an LSTM. Each encoder outputs 512 features. The three feature vectors are concatenated into 1,536 features and passed to a linear or LSTM head that predicts 48-hour in-hospital mortality and 25 phenotype groups. During training each modality is dropped with probability 0.3.</desc>
+              <defs>
+                <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0,0 L8,4 L0,8 z"/></marker>
+                <marker id="aha" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head-a" d="M0,0 L8,4 L0,8 z"/></marker>
+              </defs>
 
-<section id="teaching">
-  <h2>Teaching</h2>
-  <div class="item">
-    <h3>Head teaching assistant, Signals and Systems</h3>
-    <p class="meta">Ferdowsi University of Mashhad · Fall 2020, Spring 2021, Fall 2021</p>
-    <p>Supervised every group project in the project-based half of the course across three semesters, and wrote and graded the programming assignments and quizzes.</p>
-  </div>
-</section>
+              <!-- inputs -->
+              <rect class="d-box" x="0" y="10" width="170" height="60" rx="5"/>
+              <polyline class="d-glyph" points="14,48 20,40 25,44 31,30 37,46 43,36 48,40"/>
+              <text class="d-t" x="60" y="36">Clinical</text><text class="d-t" x="60" y="53">time series</text>
 
-<footer>Last updated November 2026</footer>
+              <rect class="d-box" x="0" y="100" width="170" height="60" rx="5"/>
+              <rect class="d-glyph" x="16" y="115" width="30" height="30" rx="3"/>
+              <path class="d-glyph" d="M31,119 L31,141 M24,124 q-5,8 0,16 M38,124 q5,8 0,16"/>
+              <text class="d-t" x="60" y="126">Chest</text><text class="d-t" x="60" y="143">radiograph</text>
 
-</main>
+              <rect class="d-box" x="0" y="190" width="170" height="60" rx="5"/>
+              <path class="d-glyph" d="M16,208 H46 M16,216 H46 M16,224 H40 M16,232 H44"/>
+              <text class="d-t" x="60" y="216">Discharge and</text><text class="d-t" x="60" y="233">radiology notes</text>
+
+              <!-- encoders -->
+              <line class="d-line" x1="170" y1="40" x2="206" y2="40" marker-end="url(#ah)"/>
+              <line class="d-line" x1="170" y1="130" x2="206" y2="130" marker-end="url(#ah)"/>
+              <line class="d-line" x1="170" y1="220" x2="206" y2="220" marker-end="url(#ah)"/>
+
+              <rect class="d-box" x="210" y="10" width="186" height="60" rx="5"/>
+              <text class="d-t" x="224" y="36">Stacked LSTM</text><text class="d-s" x="224" y="53">256 features, projected to 512</text>
+              <rect class="d-box" x="210" y="100" width="186" height="60" rx="5"/>
+              <text class="d-t" x="224" y="126">ResNet-34, CheXpert</text><text class="d-s" x="224" y="143">512 features</text>
+              <rect class="d-box" x="210" y="190" width="186" height="60" rx="5"/>
+              <text class="d-t" x="224" y="216">BioWordVec + LSTM</text><text class="d-s" x="224" y="233">256 features, projected to 512</text>
+
+              <!-- dropout paths into fusion -->
+              <path class="d-drop" d="M396,40 C420,40 420,96 446,96" marker-end="url(#aha)"/>
+              <path class="d-drop" d="M396,130 L446,130" marker-end="url(#aha)"/>
+              <path class="d-drop" d="M396,220 C420,220 420,164 446,164" marker-end="url(#aha)"/>
+
+              <!-- fusion -->
+              <rect class="d-fuse" x="450" y="66" width="124" height="128" rx="6"/>
+              <text class="d-t" x="462" y="92">Concatenate</text>
+              <text class="d-s" x="462" y="109">3 × 512 = 1,536</text>
+              <line x1="462" y1="124" x2="562" y2="124" style="stroke: var(--accent); stroke-width: 0.75; opacity: 0.5"/>
+              <text class="d-t" x="462" y="148">Fusion head</text>
+              <text class="d-s" x="462" y="165">linear or LSTM</text>
+
+              <!-- outputs -->
+              <path class="d-line" d="M574,110 C590,110 590,82 604,82" marker-end="url(#ah)"/>
+              <path class="d-line" d="M574,150 C590,150 590,178 604,178" marker-end="url(#ah)"/>
+              <rect class="d-out" x="608" y="58" width="92" height="48" rx="5"/>
+              <text class="d-t" x="618" y="78">48-hour</text><text class="d-s" x="618" y="95">mortality</text>
+              <rect class="d-out" x="608" y="154" width="92" height="48" rx="5"/>
+              <text class="d-t" x="618" y="174">25 ICD-9</text><text class="d-s" x="618" y="191">phenotypes</text>
+            </svg>
+
+            <svg class="arch-narrow" viewBox="0 0 340 470" role="img" aria-labelledby="archTitleN">
+              <title id="archTitleN">Architecture of the three-modality fusion model: three encoders, concatenation, a fusion head, and two prediction tasks</title>
+              <defs>
+                <marker id="ahn" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head" d="M0,0 L8,4 L0,8 z"/></marker>
+                <marker id="ahan" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path class="d-head-a" d="M0,0 L8,4 L0,8 z"/></marker>
+              </defs>
+              <rect class="d-box" x="0" y="0" width="140" height="56" rx="5"/>
+              <text class="d-t" x="12" y="24">Clinical</text><text class="d-t" x="12" y="41">time series</text>
+              <line class="d-line" x1="140" y1="28" x2="166" y2="28" marker-end="url(#ahn)"/>
+              <rect class="d-box" x="170" y="0" width="148" height="56" rx="5"/>
+              <text class="d-t" x="182" y="24">Stacked LSTM</text><text class="d-s" x="182" y="41">256, projected to 512</text>
+
+              <rect class="d-box" x="0" y="76" width="140" height="56" rx="5"/>
+              <text class="d-t" x="12" y="100">Chest</text><text class="d-t" x="12" y="117">radiograph</text>
+              <line class="d-line" x1="140" y1="104" x2="166" y2="104" marker-end="url(#ahn)"/>
+              <rect class="d-box" x="170" y="76" width="148" height="56" rx="5"/>
+              <text class="d-t" x="182" y="100">ResNet-34, CheXpert</text><text class="d-s" x="182" y="117">512 features</text>
+
+              <rect class="d-box" x="0" y="152" width="140" height="56" rx="5"/>
+              <text class="d-t" x="12" y="176">Discharge and</text><text class="d-t" x="12" y="193">radiology notes</text>
+              <line class="d-line" x1="140" y1="180" x2="166" y2="180" marker-end="url(#ahn)"/>
+              <rect class="d-box" x="170" y="152" width="148" height="56" rx="5"/>
+              <text class="d-t" x="182" y="176">BioWordVec + LSTM</text><text class="d-s" x="182" y="193">256, projected to 512</text>
+
+              <path class="d-drop" d="M244,208 L244,262" marker-end="url(#ahan)"/>
+              <path class="d-drop" d="M318,28 C336,30 336,252 296,264" marker-end="url(#ahan)"/>
+              <path class="d-drop" d="M318,104 C330,108 330,244 284,262" marker-end="url(#ahan)"/>
+
+              <rect class="d-fuse" x="120" y="266" width="200" height="86" rx="6"/>
+              <text class="d-t" x="134" y="290">Concatenate</text><text class="d-s" x="134" y="306">3 × 512 = 1,536</text>
+              <text class="d-t" x="134" y="328">Fusion head</text><text class="d-s" x="134" y="343">linear or LSTM</text>
+
+              <path class="d-line" d="M180,352 C180,372 80,370 80,392" marker-end="url(#ahn)"/>
+              <path class="d-line" d="M260,352 C260,372 260,372 260,392" marker-end="url(#ahn)"/>
+              <rect class="d-out" x="20" y="396" width="130" height="48" rx="5"/>
+              <text class="d-t" x="32" y="416">48-hour</text><text class="d-s" x="32" y="433">mortality</text>
+              <rect class="d-out" x="190" y="396" width="130" height="48" rx="5"/>
+              <text class="d-t" x="202" y="416">25 ICD-9</text><text class="d-s" x="202" y="433">phenotypes</text>
+            </svg>
+            <figcaption>Each encoder is trained on its own first; then the three feature vectors are joined and the fusion head is trained. Dashed lines: during training, each modality is dropped with probability 0.3.</figcaption>
+          </figure>
+
+          <table class="results">
+            <caption>Test-set performance</caption>
+            <thead>
+              <tr><th scope="col">Task and metric</th><th scope="col" class="ours">Fusion model</th><th scope="col">Best single modality</th><th scope="col">MedFuse</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>48-hour mortality, AUROC</td><td class="ours">0.883</td><td>0.868</td><td>0.874</td></tr>
+              <tr><td>48-hour mortality, AUPRC</td><td class="ours">0.609</td><td>0.558</td><td>0.567</td></tr>
+              <tr><td>Phenotyping, AUROC</td><td class="ours">0.772</td><td>0.755</td><td>0.770</td></tr>
+            </tbody>
+          </table>
+          <p class="note">For mortality the best single modality is chest radiographs. MedFuse is the published two-modality benchmark (Hayat et al., 2023). With imaging withheld from every sample, the fusion model's AUROC was 0.882 for mortality and 0.772 for phenotyping.</p>
+          <p class="go"><a href="files/Ghasemian-Moghaddam-BSc-thesis.pdf">Read the thesis (PDF)</a></p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when">2024–25</div>
+        <div>
+          <h3>Automatic pain detection from facial expressions</h3>
+          <p class="meta">Research intern, Ferdowsi University of Mashhad.</p>
+          <p>A real-time Python pipeline that scores pain frame by frame from video: face detection with RetinaFace, landmark localisation with MobileFaceNet and facial action unit estimation with Py-Feat, combined into the Prkachin and Solomon Pain Intensity score over AU4, AU6/7, AU9/10 and AU43 and thresholded for a per-frame pain decision at five processed frames per second.</p>
+          <p>The pipeline ran as the pain-detection module of an ESP32-based knee therapy device, which stops and raises an alert when it detects pain. The project also reviewed the annotated pain corpora available for supervised training (UNBC-McMaster, BioVid Heat Pain, BP4D+, Pain Emotion Faces Database) for patients who cannot self-report.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="publications">
+      <h2>Publication</h2>
+      <article class="entry">
+        <div class="when">2025</div>
+        <div>
+          <h3>MACD enhancement through optimized weighting and stability analysis</h3>
+          <p class="meta"><strong>A. Ghasemian Moghaddam</strong>, T. Bahraini, H. Sadoghi Yazdi. Under review at the <em>Journal of Economics, Finance and Administrative Science</em> (Emerald).</p>
+          <p>Two reweighted versions of the MACD technical indicator, evaluated for stability across market regimes against standard MACD on 32 US equities at three timeframes, with walk-forward validation.</p>
+          <p class="go"><a href="https://github.com/alirezagmoghadam/macdpy">Code on GitHub (macdpy)</a></p>
+        </div>
+      </article>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <article class="entry">
+        <div class="when">2025–27</div>
+        <div>
+          <h3>M.Sc. in Statistics and Data Science, KU Leuven</h3>
+          <p class="meta">First-year weighted average 16.10/20 (80.5%).</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">2019–25</div>
+        <div>
+          <h3>B.Sc. in Computer Science and Engineering, Ferdowsi University of Mashhad</h3>
+          <p class="meta">GPA 3.75/4.0, in the top 10% of a class of 124.</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <article class="entry">
+        <div class="when">2020–21</div>
+        <div>
+          <h3>Head teaching assistant, Signals and Systems</h3>
+          <p class="meta">Ferdowsi University of Mashhad, three semesters.</p>
+          <p>Supervised every group project in the project-based half of the course, and wrote and graded the programming assignments and quizzes.</p>
+        </div>
+      </article>
+    </section>
+
+  </main>
+</div>
 </body>
 </html>
